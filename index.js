@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 
 const port = process.env.PORT;
 
-const todoList = [
+let todoList = [
   {
     id: 1,
     task: "learn Express",
@@ -19,7 +19,7 @@ const todoList = [
   }
 ];
 // parse application/x.www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 // parse aplicaation/json
 app.use(bodyParser.json());
 
@@ -53,6 +53,7 @@ app.post("/", (req, res) => {
 
     res.status(200).send({
       message: "todo successfully added",
+      // newTodo,
       todoList
     });
   } catch (error) {
@@ -62,6 +63,8 @@ app.post("/", (req, res) => {
 
 // delete todo by its id
 app.delete("/:id", (req, res) => {
+  console.log(true);
+  
   try {
     const idToDelete = req.params.id;
     let newTodo = todoList.filter(item => item.id !== parseInt(idToDelete));
