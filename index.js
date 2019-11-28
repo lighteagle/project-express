@@ -14,7 +14,7 @@ let todoList = [
   },
   {
     id: 2,
-    task: "learn Express-Generator",
+    task: "Learn Express-Generator",
     done: false
   }
 ];
@@ -64,7 +64,7 @@ app.post("/", (req, res) => {
 // delete todo by its id
 app.delete("/:id", (req, res) => {
   console.log(true);
-  
+
   try {
     const idToDelete = req.params.id;
     let newTodo = todoList.filter(item => item.id !== parseInt(idToDelete));
